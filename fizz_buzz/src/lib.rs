@@ -12,14 +12,11 @@
 /// ```
 ///
 pub fn fizz_buzz(i: u32) -> String {
-    if i % 15 == 0 {
-        "fizz-buzz".to_string()
-    } else if i % 3 == 0 {
-        "fizz".to_string()
-    } else if i % 5 == 0 {
-        "buzz".to_string()
-    } else {
-        i.to_string()
+    match i {
+        n if n % 15 == 0 => "fizz-buzz".to_string(),
+        n if n % 3 == 0 => "fizz".to_string(),
+        n if n % 5 == 0 => "buzz".to_string(),
+        _ => i.to_string()
     }
 }
 
