@@ -6,6 +6,7 @@ pub fn might_fail_simple() -> Option<String> {
     None
 }
 
+#[derive(Debug)]
 pub struct MyError {
     msg: String
 }
@@ -36,9 +37,9 @@ mod test {
 
     #[test]
     fn complex() {
-        assert_eq!("Error: Oh dear!".to_string(), match might_fail_complex() {
+        assert_eq!("Error: MyError { msg: \"Oh dear!\" }".to_string(), match might_fail_complex() {
             Ok(_) => "Success".to_string(),
-            Err(e) => (format!("Error: {}", e.msg)),
+            Err(e) => (format!("Error: {:?}", e)),
         })
     }
 }
