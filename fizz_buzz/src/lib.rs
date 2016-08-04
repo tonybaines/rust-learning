@@ -14,11 +14,9 @@
 pub fn fizz_buzz(i: u32) -> String {
     if i % 15 == 0 {
         "fizz-buzz".to_string()
-    }
-        else if i % 3 == 0 {
+    } else if i % 3 == 0 {
         "fizz".to_string()
-    }
-        else if i % 5 == 0 {
+    } else if i % 5 == 0 {
         "buzz".to_string()
     } else {
         i.to_string()
