@@ -1,3 +1,16 @@
+///! Fizz-Buzz is a game of division
+
+/// # Examples
+///
+/// ```
+/// use fizz_buzz::fizz_buzz;
+///
+/// assert_eq!("1", fizz_buzz(1));
+/// assert_eq!("fizz", fizz_buzz(6));
+/// assert_eq!("buzz", fizz_buzz(10));
+/// assert_eq!("fizz-buzz", fizz_buzz(60));
+/// ```
+///
 pub fn fizz_buzz(i: u32) -> String {
     if i % 15 == 0 {
         "fizz-buzz".to_string()
