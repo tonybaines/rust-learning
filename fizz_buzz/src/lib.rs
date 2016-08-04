@@ -12,12 +12,6 @@ pub fn fizz_buzz(i: u32) -> String {
     }
 }
 
-fn main() {
-    for n in 1..100 {
-        println!("{0} => {1}", n, fizz_buzz(n))
-    }
-}
-
 #[cfg(test)]
 mod fizzbuzz_tests {
     use super::*;
