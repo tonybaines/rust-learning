@@ -11,12 +11,19 @@
 /// assert_eq!("fizz-buzz", fizz_buzz(60));
 /// ```
 ///
-pub fn fizz_buzz(i: u32) -> String {
+use std::borrow::Cow;
+
+// Wrap in Cow (clone-on-write) to avoid allocating
+// new memory for each String
+pub fn fizz_buzz(i: u32) -> Cow<'static, str> {
     match i {
-        n if n % 15 == 0 => "fizz-buzz".to_string(),
-        n if n % 3 == 0 => "fizz".to_string(),
-        n if n % 5 == 0 => "buzz".to_string(),
-        _ => i.to_string()
+        // .into() turns strings into byte-vectors
+        // which can be inferred as Cow
+        // https://chrismorgan.info/blog/rust-fizzbuzz.html
+        n if n % 15 == 0 => "fizz-buzz".into(),
+        n if n % 3 == 0 => "fizz".into(),
+        n if n % 5 == 0 => "buzz".into(),
+        _ => i.to_string().into()
     }
 }
 
