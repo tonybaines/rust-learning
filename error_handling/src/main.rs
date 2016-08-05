@@ -36,6 +36,17 @@ mod test {
     }
 
     #[test]
+    fn simple_with_if_let() {
+        let result = if let Some(_x) = will_fail_simple() {
+            "Something"
+        } else {
+            "Nothing"
+        };
+
+        assert_eq!("Nothing", result);
+    }
+
+    #[test]
     fn complex() {
         assert_eq!("Error: MyError { msg: \"Oh dear!\" }".to_string(), match will_fail_complex() {
             Ok(_) => "Success".to_string(),
@@ -57,12 +68,11 @@ mod test {
             .expect("Expected");
     }
 
-    // Always succeed
-    fn will_succeed_complex() -> Result<String, MyError> {
-        Ok("Success!".to_string())
-    }
-
     fn wrap_with_try() -> Result<String, MyError> {
+
+        // Closure with no arguments: Always succeed
+        let will_succeed_complex = || Ok("Success!".to_string());
+
         // Any failure will result in an error
         try!(will_succeed_complex());
         try!(will_fail_complex());
